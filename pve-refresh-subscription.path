@@ -1,0 +1,10 @@
+[Unit]
+Description=Update Proxmox VE subscription file on identity change
+
+[Path]
+Unit=pve-fake-subscription.service
+PathChanged=/etc/ssh/ssh_host_rsa_key.pub
+PathChanged=/etc/machine-id
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Update Proxmox VE subscription file every twenty days
+
+[Timer]
+Unit=pve-fake-subscription.service
+OnBootSec=0sec
+OnUnitInactiveSec=1728000sec
+
+[Install]
+WantedBy=timers.target

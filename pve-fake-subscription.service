@@ -1,0 +1,11 @@
+[Unit]
+Description=Generate immutable Proxmox VE subscription file
+ConditionPathExists=/etc/subscription
+
+[Service]
+Type=oneshot
+Environment='PVE_SUBSCRIPTION_FILE=/etc/subscription'
+ExecStartPre=/usr/bin/chattr -i ${PVE_SUBSCRIPTION_FILE}
+ExecStart=/usr/local/sbin/pve-fake-subscription.sh
+ExecStartPost=/usr/bin/chattr +i ${PVE_SUBSCRIPTION_FILE}
+#StandardOutput=file:/etc/subscription
